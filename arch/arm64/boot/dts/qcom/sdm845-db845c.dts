@@ -625,6 +625,10 @@
 	};
 };
 
+&pmi8998_rradc {
+	status = "okay";
+};
+
 &pmi8998_lpg {
 	status = "okay";
 
