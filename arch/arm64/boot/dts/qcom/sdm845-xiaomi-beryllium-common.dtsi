@@ -3,6 +3,7 @@
 /dts-v1/;
 
 #include <dt-bindings/dma/qcom-gpi.h>
+#include <dt-bindings/leds/common.h>
 #include <dt-bindings/pinctrl/qcom,pmic-gpio.h>
 #include <dt-bindings/regulator/qcom,rpmh-regulator.h>
 #include <dt-bindings/sound/qcom,q6afe.h>
@@ -376,6 +377,16 @@
 &pmi8998_charger {
 	status = "okay";
 	monitored-battery = <&battery>;
+};
+
+&pmi8998_lpg {
+	status = "okay";
+
+	led@5 {
+		reg = <5>;
+		color = <LED_COLOR_ID_WHITE>;
+		function = LED_FUNCTION_STATUS;
+	};
 };
 
 &pm8998_pon {
