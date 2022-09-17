@@ -3297,9 +3297,9 @@ static int tfa98xx_i2c_remove(struct i2c_client *i2c)
 	snd_soc_unregister_codec(&i2c->dev);
 #endif
 	if (gpio_is_valid(tfa98xx->irq_gpio))
-		devm_gpio_free(&i2c->dev, tfa98xx->irq_gpio);
+		devm_gpiod_put(&i2c->dev, gpio_to_desc(tfa98xx->irq_gpio));
 	if (gpio_is_valid(tfa98xx->reset_gpio))
-		devm_gpio_free(&i2c->dev, tfa98xx->reset_gpio);
+		devm_gpiod_put(&i2c->dev, gpio_to_desc(tfa98xx->reset_gpio));
 
 	mutex_lock(&tfa98xx_mutex);
 	list_del(&tfa98xx->list);
