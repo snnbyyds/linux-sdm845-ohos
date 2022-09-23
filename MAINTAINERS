@@ -6751,6 +6751,11 @@ S:	Maintained
 F:	Documentation/devicetree/bindings/display/panel/samsung,s6d27a1.yaml
 F:	drivers/gpu/drm/panel/panel-samsung-s6d27a1.c
 
+DRM DRIVER FOR SAMSUNG S6E3FC2X01 PANELS
+M:	Nia Espera <a5b6@riseup.net>
+S:	Maintained
+F:	drivers/gpu/drm/panel/panel-samsung-s6e3fc2x01.c
+
 DRM DRIVER FOR SITRONIX ST7703 PANELS
 M:	Guido Günther <agx@sigxcpu.org>
 R:	Purism Kernel Team <kernel@puri.sm>
