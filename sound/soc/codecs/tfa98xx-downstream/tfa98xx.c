@@ -3271,7 +3271,7 @@ static int tfa98xx_i2c_probe(struct i2c_client *i2c,
 	return 0;
 }
 
-static int tfa98xx_i2c_remove(struct i2c_client *i2c)
+static void tfa98xx_i2c_remove(struct i2c_client *i2c)
 {
 	struct tfa98xx *tfa98xx = i2c_get_clientdata(i2c);
 
@@ -3310,7 +3310,7 @@ static int tfa98xx_i2c_remove(struct i2c_client *i2c)
 	}
 	mutex_unlock(&tfa98xx_mutex);
 
-	return 0;
+	return;
 }
 
 static const struct i2c_device_id tfa98xx_i2c_id[] = {
