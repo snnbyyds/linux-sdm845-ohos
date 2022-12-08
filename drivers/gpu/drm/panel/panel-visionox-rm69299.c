@@ -92,7 +92,7 @@ static int visionox_rm69299_power_off(struct visionox_rm69299 *ctx)
 	return regulator_bulk_disable(ARRAY_SIZE(ctx->supplies), ctx->supplies);
 }
 
-static int visionox_rm69299_unprepare(struct drm_panel *panel)
+static int visionox_rm69299_disable(struct drm_panel *panel)
 {
 	struct visionox_rm69299 *ctx = panel_to_ctx(panel);
 	int ret;
@@ -112,6 +112,14 @@ static int visionox_rm69299_unprepare(struct drm_panel *panel)
 		dev_err(ctx->panel.dev, "enter_sleep cmd failed ret = %d\n",
 			ret);
 	}
+
+	return ret;
+}
+
+static int visionox_rm69299_unprepare(struct drm_panel *panel)
+{
+	struct visionox_rm69299 *ctx = panel_to_ctx(panel);
+	int ret;
 
 	ret = visionox_rm69299_power_off(ctx);
 
@@ -308,7 +316,7 @@ static int visionox_rm69299_prepare(struct drm_panel *panel)
 	}
 
 	/* Per DSI spec wait 120ms after sending set_display_on DCS command */
-	msleep(120);
+	msleep(160);
 
 	ctx->prepared = true;
 
@@ -334,6 +342,7 @@ static int visionox_rm69299_get_modes(struct drm_panel *panel,
 }
 
 static const struct drm_panel_funcs visionox_rm69299_drm_funcs = {
+	.disable = visionox_rm69299_disable,
 	.unprepare = visionox_rm69299_unprepare,
 	.prepare = visionox_rm69299_prepare,
 	.get_modes = visionox_rm69299_get_modes,
