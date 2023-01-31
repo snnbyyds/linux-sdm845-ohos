@@ -186,6 +186,11 @@
 			reg = <0 0x97b00000 0 0x100000>;
 			no-map;
 		};
+
+		cont_splash_mem: framebuffer@9d400000 {
+			reg = <0x0 0x9d400000 0x0 0x2400000>;
+			no-map;
+		};
 	};
 
 	cpus: cpus {
