@@ -869,7 +869,7 @@ static struct mousedev *mousedev_create(struct input_dev *dev,
 
 	if (mixdev) {
 		dev_set_name(&mousedev->dev, "mice");
-
+		mousedev->open = 1;
 		mousedev->open_device = mixdev_open_devices;
 		mousedev->close_device = mixdev_close_devices;
 	} else {

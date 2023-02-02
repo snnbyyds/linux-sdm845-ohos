@@ -260,6 +260,15 @@ SECTIONS
 		INIT_RAM_FS
 		*(.init.altinstructions .init.bss)	/* from the EFI stub */
 	}
+
+#ifdef CONFIG_DRIVERS_HDF
+	.init.hdf_table : {
+		_hdf_drivers_start = .;
+		*(.hdf.driver)
+		_hdf_drivers_end = .;
+	}
+#endif
+
 	.exit.data : {
 		EXIT_DATA
 	}
